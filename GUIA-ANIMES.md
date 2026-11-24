@@ -1,53 +1,52 @@
 # Catálogo de animes — Saimo TV
 
-Este repositório está sendo preparado para organizar animes no Saimo TV.
+Este projeto organiza uma seleção de animes para o Saimo TV, priorizando áudio japonês e legendas em português do Brasil (PT-BR).
 
-## Importante sobre a reprodução
+## Situação real do projeto
 
-O Saimo TV é um reprodutor: ele não hospeda episódios. Para que um episódio toque, o arquivo `redeflix/links-animes.txt` precisa conter uma fonte de vídeo direta e autorizada (por exemplo, um endereço HLS ou MP4 que o usuário tenha direito de acessar). Links de páginas de streaming, páginas de busca e endereços inventados não funcionam como fontes.
+- A seleção editorial está organizada em [SELECAO-ANIMES.md](SELECAO-ANIMES.md).
+- O arquivo de reprodução do Saimo ainda não está pronto: faltam fontes de vídeo diretas, autorizadas e compatíveis.
+- Não vou colocar links de páginas como se fossem arquivos de vídeo, nem inventar endereços HLS/MP4. Isso faria o catálogo parecer pronto, mas os episódios não tocariam.
 
-Por isso, este guia não inclui links piratas nem fontes fictícias. O arquivo M3U atual foi mantido intacto para não quebrar o que já existe.
+## Como o Saimo lê animes
 
-## Seleção editorial sugerida
+Segundo a documentação oficial, o arquivo opcional de animes fica em:
 
-### Clássicos
-- Death Note
-- Fullmetal Alchemist: Brotherhood
-- Hunter x Hunter (2011)
-- Naruto
-- Code Geass
-- Steins;Gate
+`redeflix/links-animes.txt`
 
-### Séries recentes (2025)
-- Solo Leveling — 2ª temporada
-- Sakamoto Days
-- DAN DA DAN — 2ª temporada
-- Kaiju No. 8 — 2ª temporada
-- My Hero Academia — temporada final
-
-### Lançamentos / continuações de 2026
-- Jujutsu Kaisen — 3ª temporada
-- Frieren e a Jornada para o Além — continuação
-- Oshi no Ko — 3ª temporada
-
-A disponibilidade de áudio japonês e legendas em português do Brasil varia por serviço, região e temporada; deve ser confirmada em cada fonte oficial.
-
-## Formato que o Saimo espera
-
-O arquivo de animes é `redeflix/links-animes.txt`. Cada título começa com:
+Cada anime começa com uma linha contendo título, ano e ID, separados por TAB:
 
 ```text
 @Título do Anime<TAB>ANO<TAB>ID
 ```
 
-E cada episódio precisa de uma linha no formato:
+Cada episódio usa quatro colunas separadas por TAB:
 
 ```text
-TEMPORADA<TAB>EPISÓDIO<TAB>leg<TAB>FONTE_DIRETA_AUTORIZADA
+TEMPORADA<TAB>EPISÓDIO<TAB>VERSÃO<TAB>FONTES
 ```
 
-Sem uma fonte direta autorizada, não há como prometer reprodução. O exemplo oficial de formato está na documentação do Saimo: https://github.com/SaimoTV/SaimoPlayer/blob/main/docs/formato-saimo.md
+Exemplo de estrutura (apenas ilustrativo; os endereços abaixo não são fontes reais):
 
-## Próximo passo técnico
+```text
+@Anime de Exemplo<TAB>2024<TAB>99
+1<TAB>1<TAB>leg<TAB>https://servidor-autorizado/exemplo-episodio-1.m3u8
+```
 
-Quando houver fontes diretas autorizadas, o catálogo pode ser publicado na pasta de filmes e séries e conectado em **Ajustes → Listas** no Saimo. A pasta precisa conter também o índice e os demais arquivos obrigatórios do formato Saimo.
+As versões podem ser `dub` (dublado) ou `leg` (legendado). As fontes precisam ser endereços de vídeo completos e acessíveis legalmente. O exemplo oficial também mostra a possibilidade de fontes de reserva.
+
+## Como usar no Saimo
+
+O formato completo do Saimo é publicado em arquivos hospedados na internet. Em **Ajustes → Listas**, o app recebe os endereços-base de canais e de filmes/séries. O arquivo de animes fica dentro da pasta de filmes/séries, em `redeflix/links-animes.txt`.
+
+A documentação oficial explica os demais arquivos obrigatórios, a hospedagem HTTPS e o validador:
+https://github.com/SaimoTV/SaimoPlayer/blob/main/docs/formato-saimo.md
+
+## O que falta para ativar a reprodução
+
+1. Confirmar uma fonte oficial que ofereça o anime no Brasil.
+2. Confirmar que a fonte permite acesso direto autorizado ao vídeo (não apenas à página do episódio).
+3. Confirmar áudio japonês e legenda PT-BR para a temporada/episódio.
+4. Só então adicionar o episódio ao arquivo do Saimo e validar a lista.
+
+**Importante:** links de Crunchyroll, Max, YouTube ou outras páginas oficiais podem servir como referência para assistir no serviço, mas não são automaticamente links diretos que o Saimo consiga reproduzir. Não use credenciais, cookies ou links privados de contas.
