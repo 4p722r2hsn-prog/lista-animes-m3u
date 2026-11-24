@@ -5,6 +5,7 @@ Este projeto organiza uma seleção de animes para o Saimo TV, priorizando áudi
 ## Situação real do projeto
 
 - A seleção editorial está organizada em [SELECAO-ANIMES.md](SELECAO-ANIMES.md).
+- Destinos oficiais para assistir legalmente estão reunidos em [FONTES-OFICIAIS.md](FONTES-OFICIAIS.md).
 - O arquivo de reprodução do Saimo ainda não está pronto: faltam fontes de vídeo diretas, autorizadas e compatíveis.
 - Não vou colocar links de páginas como se fossem arquivos de vídeo, nem inventar endereços HLS/MP4. Isso faria o catálogo parecer pronto, mas os episódios não tocariam.
 
